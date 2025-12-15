@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="ORITRIP: ENHANCING PERSON RE-IDENTIFICATION WITH ORIENTATION-AWARE TRIPLET LOSS">
+  <meta name="keywords" content="OriTrip">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OriTrip</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/ipu_icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://trinhquocnguyen.github.io/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://trinhquocnguyen.github.io/core-reid-homepage/">
+              CORE-ReID
+            </a>
+            <a class="navbar-item" href="https://trinhquocnguyen.github.io/core-reid-v2-homepage/">
+              CORE-ReID V2
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"> 
+              <img  src="static/images/rocket.gif" width="60" height="60">
+              OriTrip: Enhancing Person Re-identification With Orientation-aware Triplet Loss</h1>
+            <div class="is-size-4 publication-authors">
+              <span class="author-block">
+                <a href="https://www.researchgate.net/profile/Trinh-Nguyen-89">Trinh Quoc Nguyen</a><sup>1,2,*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/syahid-al-irfan-0868a7a8/">Syahid Al Irfan</a><sup>1,*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.researchgate.net/profile/Prima-Ardiansyah">Oky Dicky Ardiansyah Prima</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Tista Pal</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Nguyen Gia Minh Thao</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Dung Thi My Nguyen</a><sup>4</sup>
+              </span>.
+            </div>
+            <br>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup><a href="https://www.iwate-pu.ac.jp/en/">Iwate Prefectural University</a>,</span>
+              <span class="author-block"><sup>2</sup><a href="https://cybercore.co.jp/">CyberCore Co., Ltd</a>.</span>
+              <span class="author-block"><sup>3</sup><a href="https://www.shimane-u.ac.jp/en/">Shimane University</a>.</span>
+              <span class="author-block"><sup>3</sup><a href="https://dhv.edu.vn/">Hung Vuong University of Ho Chi Minh City</a>.</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal contributions</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/TrinhQuocNguyen/oritrip"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Slides Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-slideshare"></i>
+                    </span>
+                    <span>Slides</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+              </div>
+              <img src="./static/images/collaboration.png" class="interpolation-image" width="600px" alt="Collaboration" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+        <!-- <h2 class="subtitle has-text-centered">
+        <span class="dnerf">CORE-ReID</span> is a framwork for Unsupervised Domain Adaption for person re-identification.
+      </h2> -->
+      </div>
+    </div>
+  </section>
+
+  <hr>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <img src="static/images/happy.gif" width="320"> 
+
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Person re-identification faces real challenges when the same person appears in different poses and camera 
+              angles across multiple views. While standard triplet loss functions are effective for learning features that distinguish between individuals, 
+              they struggle with capturing spatial orientation details. This creates problems when the system needs to match the same person 
+              who appears at different angles or in different poses. 
+              This study presents an <b>orientation-aware triplet loss function</b> that incorporates human body orientation 
+              information during training. 
+            </p>
+            <p>
+              The approach builds on conventional triplet loss by adding orientation constraints that capture the geometric relationships between 
+              different poses and viewpoints of the same person. 
+              This orientation-aware mechanism can maintain consistent feature representations across varying body orientations while keeping the 
+              ability to distinguish between different individuals. 
+              Thorough evaluations on three popular person re-identification datasets showed performance gained when 
+              integrating the orientation-aware triplet loss with state-of-the-art algorithms. 
+              The results demonstrated better matching accuracy compared to methods using traditional triplet loss. 
+            </p>
+            <p>
+              In addition, the orientation-aware approach tackles key limitations in existing person re-identification systems by modeling the 
+              geometric properties of human subjects during feature learning. 
+              This research contributes to advancing person re-identification technology by providing a more effective loss function that better 
+              captures the inherent spatial characteristics of human appearance across different orientations.
+            </p>
+            <p>
+              Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/oritrip</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+  <hr>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Paper Section-->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Overall</h2>
+          <div class="content has-text-justified">
+            <div style="text-align: center;">
+            <img src="./static/images/Figure1.png" class="interpolation-image"
+              alt="Interpolate start reference image." width="600px"/>
+            </div>
+            <p><b>Figure 1.</b> Back-facing and side-facing images of the same individual with greater visual 
+              dissimilarity than images
+               of two different individuals captured in the same body orientation wearing similar clothing.</p>
+          </div>
+        </div>
+      </div>
+      <!--/ Paper Section-->
+
+      <!-- Paper Small Section-->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">Methodology</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/Figure2.png" class="interpolation-image"
+              alt="Interpolate start reference image." />
+            <p><b>Figure 2.</b> Overall pipeline of proposed OriTrip.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper Small Section-->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">Human Body Orientation Estimation</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/Figure3.png" class="interpolation-image"
+              alt="Interpolate start reference image." />
+            <p><b>Figure 3.</b> Body orientation degree related to human pose.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper Small Section-->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-4">Original Triplet Loss and OriTrip</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/Figure4.png" class="interpolation-image"
+              alt="Interpolate start reference image." />
+            <p><b>Table I.</b> Comparison between original triplet loss and OriTrip.
+              </p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-2">Results on Person ReID</h2>
+              <div class="content has-text-justified">
+                <img src="./static/images/Figure5.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <p><b>Table II.</b> Results on Market-1501. Numbers in <b>bold</b> indicate improved performance with proposed OriTrip.
+                </p>
+              </div>
+              <div class="content has-text-justified">
+                <img src="./static/images/Figure6.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <p><b>Table III.</b> Results on CUHK03. Numbers in <b>bold</b> indicate improved performance with proposed OriTrip.
+                </p>
+              </div>
+              <div class="content has-text-justified">
+                <img src="./static/images/Figure7.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <p><b>Table IV.</b> Results on MSMT17. Numbers in <b>bold</b> indicate improved performance with proposed OriTrip.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h1 class="title">Citations</h2>
+        <h4>If you find this code useful for your research, please consider citing our paper.</h2>
+          <h2 class="title">BibTeX</h2>
+          <!-- <pre><code>@Article{aisens1010004,
+    AUTHOR = {Nguyen, Trinh Quoc and Prima, Oky Dicky Ardiansyah and Irfan, Syahid Al and Purnomo, Hindriyanto Dwi and Tanone, Radius},
+    TITLE = {CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion},
+    JOURNAL = {AI Sensors},
+    VOLUME = {1},
+    YEAR = {2025},
+    NUMBER = {1},
+    ARTICLE-NUMBER = {4},
+    URL = {https://www.mdpi.com/3042-5999/1/1/4},
+    ISSN = {3042-5999},
+    DOI = {10.3390/aisens1010004}
+  }</code></pre> -->
+
+          <h2 class="title">MDPI and ACS Style</h2>
+          <!-- <pre><code>Nguyen, T.Q.; Prima, O.D.A.; Irfan, S.A.; Purnomo, H.D.; Tanone, R. 
+CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion. 
+AI Sens. 2025, 1, 4. https://doi.org/10.3390/aisens1010004
+</code></pre> -->
+          <h2 class="title">AMA Style</h2>
+          <!-- <pre><code>Nguyen TQ, Prima ODA, Irfan SA, Purnomo HD, Tanone R. 
+CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion. 
+AI Sensors. 2025; 1(1):4. https://doi.org/10.3390/aisens1010004
+</code></pre> -->
+          <h2 class="title">Chicago/Turabian Style</h2>
+          <!-- <pre><code>Nguyen, Trinh Quoc, Oky Dicky Ardiansyah Prima, Syahid Al Irfan, Hindriyanto Dwi Purnomo, and Radius Tanone. 2025.
+"CORE-ReID V2: Advancing the Domain Adaptation for Object Re-Identification with Optimized Training and Ensemble Fusion" 
+AI Sensors 1, no. 1: 4. https://doi.org/10.3390/aisens1010004 -->
+</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://www.mdpi.com/2674-113X/3/2/12">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/TrinhQuocNguyen/oritrip" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              *This project is intended solely for academic research and effect demonstration.
+            </p>
+            <p>
+              *This page was built using the Template which was adopted from the <a
+                href="https://nerfies.github.io/">Nerfies</a> project page.
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
