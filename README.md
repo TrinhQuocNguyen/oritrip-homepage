@@ -1,5 +1,5 @@
 # ORITRIP
-Link: https://trinhquocnguyen.github.io/ori-homepage/
+Link: https://trinhquocnguyen.github.io/oritrip-homepage/
 
 
 
